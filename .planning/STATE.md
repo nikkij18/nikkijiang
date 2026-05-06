@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-01-PLAN.md — data layer (types.ts + projects.ts)
-last_updated: "2026-05-06T17:26:51.031Z"
+stopped_at: Completed 01-02-PLAN.md — identity surface (Hero, NavBar, layout, page)
+last_updated: "2026-05-06T17:32:22.422Z"
 last_activity: 2026-05-06
 progress:
   total_phases: 3
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 33
+  completed_plans: 2
+  percent: 67
 ---
 
 # STATE.md — nikkijiang Portfolio
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-05-05)
 ## Current Position
 
 Phase: 1 of 3 (Foundation)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: Ready to execute
 Last activity: 2026-05-06
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
@@ -53,6 +53,7 @@ Progress: [███░░░░░░░] 33%
 
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 160s | 3 tasks | 2 files |
+| Phase 01-foundation P02 | 165 | 3 tasks | 4 files |
 
 ## Phase Progress
 
@@ -79,6 +80,10 @@ Recent decisions affecting current work:
 - Placeholder values used in lib/projects.ts for cover images/descriptions/URLs (D-11 — Phase 2 replaces with real content)
 - 5 project slugs locked in PROJ-03 order: locked-out-of-care first, task-manager last
 - postcss.config.mjs verified present — no recreation needed (pattern mapper was correct)
+- D-01/D-02: Hero split text changed to Data/Stories with locked bio sentence (data-storyteller framing)
+- D-05: NavBar lifted to root layout — all routes receive it automatically
+- D-06: Blogs removed from NavBar LINKS; Contact CTA pill preserved (D-07)
+- D-08: metadata.description updated to Georgetown data storyteller identity string
 
 ### Pending Todos
 
@@ -99,6 +104,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-06T17:26:51.022Z
-Stopped at: Completed 01-01-PLAN.md — data layer (types.ts + projects.ts)
+Last session: 2026-05-06T17:32:22.411Z
+Stopped at: Completed 01-02-PLAN.md — identity surface (Hero, NavBar, layout, page)
 Resume file: None

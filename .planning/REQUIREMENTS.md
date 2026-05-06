@@ -4,9 +4,12 @@
 
 ### HOME-01–03: Home Page
 
-- [ ] **HOME-01**: User sees a hero with Nikki's name, "data storyteller / global health + design" identity framing, and a brief tagline — consistent with About page opening
-- [ ] **HOME-02**: User can navigate to Projects, About, and Contact from the NavBar on every page (NavBar lives in root layout, not per-page)
-- [ ] **HOME-03**: Page metadata (title, description) reflects data storyteller / global health identity (not "Product designer & Georgetown student")
+- [x] **HOME-01
+**: User sees a hero with Nikki's name, "data storyteller / global health + design" identity framing, and a brief tagline — consistent with About page opening
+- [x] **HOME-02
+**: User can navigate to Projects, About, and Contact from the NavBar on every page (NavBar lives in root layout, not per-page)
+- [x] **HOME-03
+**: Page metadata (title, description) reflects data storyteller / global health identity (not "Product designer & Georgetown student")
 
 ### PROJ-01–08: Projects
 
@@ -35,7 +38,8 @@
 - [x] **INFRA-01
 **: Project data lives in `lib/projects.ts` as a typed `Project[]` array — no CMS, no MDX
 - [ ] **INFRA-02**: Individual project pages use `/projects/[slug]` routing with `generateStaticParams` for full SSG
-- [ ] **INFRA-03**: Blogs nav link removed; no blog route scaffolded
+- [x] **INFRA-03
+**: Blogs nav link removed; no blog route scaffolded
 
 ---
 
