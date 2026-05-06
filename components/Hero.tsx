@@ -4,8 +4,8 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-8 pt-24 pb-12">
 
-      {/* Big split typography — sits behind the photo */}
-      <div className="absolute inset-0 flex items-center justify-between px-8 pointer-events-none select-none">
+      {/* Big split typography — floats in front of photo so words are always legible */}
+      <div className="absolute inset-0 z-20 flex items-center justify-between px-8 pointer-events-none select-none">
         <span
           className="font-black uppercase leading-none text-neutral-900"
           style={{ fontSize: "clamp(72px, 10vw, 160px)" }}
