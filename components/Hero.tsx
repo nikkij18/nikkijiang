@@ -16,8 +16,8 @@ export default function Hero() {
         >Stories</span>
       </div>
 
-      {/* Center column: name + photo */}
-      <div className="relative z-10 flex flex-col items-center gap-0">
+      {/* Center column: name + photo — absolutely centered to avoid flex/padding drift */}
+      <div className="absolute z-10 flex flex-col items-center" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
 
         {/* Name — top left of the photo */}
         <div className="w-full max-w-xs self-center mb-2 pl-1">
