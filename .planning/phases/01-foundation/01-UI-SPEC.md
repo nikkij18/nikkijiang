@@ -1,7 +1,7 @@
 ---
 phase: 1
 slug: foundation
-status: draft
+status: approved
 shadcn_initialized: false
 preset: none
 created: 2026-05-05
@@ -67,17 +67,20 @@ computed range, not a fixed px value.
 | Role | Size | Weight | Line Height | Usage |
 |------|------|--------|-------------|-------|
 | Display (split text) | clamp(72px, 10vw, 160px) | 900 (font-black) | 1 (leading-none) | Hero "Data" / "Stories" background text |
-| Heading (name label) | 12px (text-xs) | 600 (font-semibold) | default | "Nikki Jiang" eyebrow above photo |
+| Heading (name label) | 12px (text-xs) | 400 (regular) | default | "Nikki Jiang" eyebrow above photo — differentiated by `tracking-widest uppercase`, not weight |
 | Body (bio) | clamp(12px, 1vw, 15px) | 400 (regular) | 1.625 (leading-relaxed) | Hero bio bottom-right |
-| Label (nav links) | 14px (text-sm) | 400 regular / 500 medium (Contact CTA only) | default | NavBar link text |
+| Label (nav links) | 14px (text-sm) | 400 (regular) | default | NavBar link text and Contact CTA — CTA differentiated by pill background, not weight |
 
 Letter spacing:
 - Name label only: `tracking-widest` + `uppercase` — signals identity label, not body copy
 - All other text: default tracking
 
-Weight rule: exactly 2 weights in use — regular (400) and semibold/black for emphasis.
-The display split text uses font-black (900) as a decorative typographic element, not a
-content weight. Content weights are regular (400) and medium (500) for the Contact CTA.
+Weight rule: exactly 2 weights declared — 400 (regular) and 900 (font-black).
+- 400 applies to all content text: bio, nav links, Contact CTA, name label
+- 900 applies only to the Hero display split text ("Data" / "Stories")
+- Name label visual distinction comes from `tracking-widest uppercase`, not font weight
+- Contact CTA visual distinction comes from the dark pill background (#171717 on white), not font weight
+- Remove `font-semibold` from name label class; remove `font-medium` from Contact CTA class
 
 ---
 
@@ -217,11 +220,11 @@ No third-party component registries are in use. All components are handwritten.
 
 ## Checker Sign-Off
 
-- [ ] Dimension 1 Copywriting: PASS
-- [ ] Dimension 2 Visuals: PASS
-- [ ] Dimension 3 Color: PASS
-- [ ] Dimension 4 Typography: PASS
-- [ ] Dimension 5 Spacing: PASS
-- [ ] Dimension 6 Registry Safety: PASS
+- [x] Dimension 1 Copywriting: FLAG (non-blocking — "Contact" CTA locked by D-07 as existing nav pattern)
+- [x] Dimension 2 Visuals: FLAG (non-blocking — hierarchy inferable from layout constraints)
+- [x] Dimension 3 Color: PASS
+- [x] Dimension 4 Typography: PASS (2 weights: 400 + 900)
+- [x] Dimension 5 Spacing: FLAG (non-blocking — py-2.5 / 10px preserved from existing code per D-07)
+- [x] Dimension 6 Registry Safety: PASS
 
-**Approval:** pending
+**Approval:** ✓ APPROVED — 2026-05-05
