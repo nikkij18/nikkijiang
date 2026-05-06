@@ -32,7 +32,7 @@ export default function Hero() {
           style={{ width: "clamp(240px, 28vw, 380px)", aspectRatio: "3/4" }}
         >
           <Image
-            src="/headshot.jpg"
+            src="/Headshot.png"
             alt="Nikki Jiang"
             fill
             className="object-cover object-top"
