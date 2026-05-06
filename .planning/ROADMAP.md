@@ -27,7 +27,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. NavBar links to /projects, /about, and /contact without 404; Blogs link is gone
   3. Page `<title>` and meta description reflect data storyteller / global health framing
   4. `lib/projects.ts` exports a typed `Project[]` array with all 5 projects; `/projects/[slug]` routes are statically generated
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 01-01-PLAN.md — Create lib/types.ts + lib/projects.ts data layer; verify postcss.config.mjs
+- [ ] 01-02-PLAN.md — Fix Hero copy, remove Blogs from NavBar, lift NavBar to root layout, fix metadata
+- [ ] 01-03-PLAN.md — Create stub pages (/about, /projects, /contact, /projects/[slug]); delete scaffold SVGs
 **UI hint**: yes
 
 ### Phase 2: Projects
@@ -63,6 +67,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/3 | Not started | - |
 | 2. Projects | 0/TBD | Not started | - |
 | 3. About & Contact | 0/TBD | Not started | - |

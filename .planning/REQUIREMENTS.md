@@ -32,7 +32,8 @@
 
 ### INFRA-01–03: Infrastructure
 
-- [ ] **INFRA-01**: Project data lives in `lib/projects.ts` as a typed `Project[]` array — no CMS, no MDX
+- [x] **INFRA-01
+**: Project data lives in `lib/projects.ts` as a typed `Project[]` array — no CMS, no MDX
 - [ ] **INFRA-02**: Individual project pages use `/projects/[slug]` routing with `generateStaticParams` for full SSG
 - [ ] **INFRA-03**: Blogs nav link removed; no blog route scaffolded
 
