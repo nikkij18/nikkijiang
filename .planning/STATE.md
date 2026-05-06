@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-02-PLAN.md — identity surface (Hero, NavBar, layout, page)
-last_updated: "2026-05-06T17:32:22.422Z"
+stopped_at: Completed 01-03-PLAN.md — routing surface, stub pages, scaffold cleanup
+last_updated: "2026-05-06T17:38:00.507Z"
 last_activity: 2026-05-06
 progress:
   total_phases: 3
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
-  percent: 67
+  completed_plans: 3
+  percent: 100
 ---
 
 # STATE.md — nikkijiang Portfolio
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-05-05)
 ## Current Position
 
 Phase: 1 of 3 (Foundation)
-Plan: 2 of 3 in current phase
+Plan: 3 of 3 in current phase
 Status: Ready to execute
 Last activity: 2026-05-06
 
-Progress: [███████░░░] 67%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -54,6 +54,7 @@ Progress: [███████░░░] 67%
 *Updated after each plan completion*
 | Phase 01-foundation P01 | 160s | 3 tasks | 2 files |
 | Phase 01-foundation P02 | 165 | 3 tasks | 4 files |
+| Phase 01-foundation P03 | 162 | 3 tasks | 4 files |
 
 ## Phase Progress
 
@@ -84,6 +85,9 @@ Recent decisions affecting current work:
 - D-05: NavBar lifted to root layout — all routes receive it automatically
 - D-06: Blogs removed from NavBar LINKS; Contact CTA pill preserved (D-07)
 - D-08: metadata.description updated to Georgetown data storyteller identity string
+- All 5 project slugs prerendered as static HTML via generateStaticParams wired to lib/projects.ts
+- params typed as Promise<{ slug: string }> per Next.js 16 contract — const { slug } = await params
+- Scaffold SVGs (file.svg, globe.svg, next.svg, vercel.svg, window.svg) were untracked in git — deleted from disk
 
 ### Pending Todos
 
@@ -104,6 +108,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-05-06T17:32:22.411Z
-Stopped at: Completed 01-02-PLAN.md — identity surface (Hero, NavBar, layout, page)
+Last session: 2026-05-06T17:38:00.493Z
+Stopped at: Completed 01-03-PLAN.md — routing surface, stub pages, scaffold cleanup
 Resume file: None
