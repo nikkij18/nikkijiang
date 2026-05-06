@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden px-8 pt-24 pb-12">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-8 pt-24 pb-12">
 
       {/* Big split typography — sits behind the photo */}
       <div className="absolute inset-0 flex items-center justify-between px-8 pointer-events-none select-none">
