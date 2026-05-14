@@ -25,12 +25,12 @@ function clampAng(a: number): number {
 function drawTree(ctx: CanvasRenderingContext2D, W: number, H: number) {
   const mobile = W < 768;
   // Trunk base sits in the bottom-right corner; canopy fans left from there.
-  const bx = mobile ? W * 0.55 : W * 0.86;
+  const bx = mobile ? W * 0.55 : W * 0.80;
   const by = H + 5;
-  const treeLen = H * (mobile ? 0.22 : 0.16);
+  const treeLen = H * (mobile ? 0.30 : 0.28);
   // Slight rightward lean at the base creates the natural bend when the first
   // asymmetric split sweeps the main branch hard left.
-  const initAng = -Math.PI / 2 + 0.22;
+  const initAng = -Math.PI / 2 + 0.35;
 
   // Recurse helper shared by scan and draw passes.
   // First split is intentionally asymmetric: one arm sweeps hard left (horizontal),
@@ -45,7 +45,7 @@ function drawTree(ctx: CanvasRenderingContext2D, W: number, H: number) {
     cb(x, y, ang, len, depth);
     if (depth >= 5) {
       // Asymmetric trunk split: left arm sweeps hard left, right arm stays upward.
-      recurse(ex, ey, clampAng(ang - 0.85), len * 0.82, depth - 1, cb);
+      recurse(ex, ey, clampAng(ang - 1.25), len * 0.82, depth - 1, cb);
       recurse(ex, ey, clampAng(ang + 0.30), len * 0.74, depth - 1, cb);
     } else {
       const splits = 3;
@@ -69,38 +69,74 @@ function drawTree(ctx: CanvasRenderingContext2D, W: number, H: number) {
     if (ty < minY) minY = ty; if (ty > maxY) maxY = ty;
   });
 
-  const canopyCx = tipCount > 0 ? sumX / tipCount : bx;
-  const canopyCy = tipCount > 0 ? sumY / tipCount : by - treeLen * 1.8;
-  // Horizontal bloom fill: Rx is notably wider than Ry.
-  const canopyRx = Math.max((maxX - minX) / 2 + 70, 80);
-  const canopyRy = Math.max((maxY - minY) / 2 + 35, 40);
+  const canopyCx = (tipCount > 0 ? sumX / tipCount : bx) + W * 0.05;
+  const canopyCy = (tipCount > 0 ? sumY / tipCount : by - treeLen * 1.8) + H * 0.05;
+  const canopyRx = Math.max((maxX - minX) / 2 + 200, 160);
+  const canopyRy = Math.max((maxY - minY) / 2 + 140, 120);
 
-  // Pass 2: draw bloom fill positioned at the real canopy centre.
-  for (let i = 0; i < 700; i++) {
+  // Gap fill anchored to the tip scan: center horizontally between the clusters,
+  // vertically at the top third of the canopy where the gap actually lives.
+  const gapCx = (minX + maxX) / 2;
+  const gapCy = minY + (maxY - minY) * 0.25;
+  const gapR = (maxX - minX) * 0.35 + 80;
+  for (let i = 0; i < 800; i++) {
+    const a = rnd(0, Math.PI * 2);
+    const r = Math.sqrt(Math.random()) * gapR;
+    ctx.globalAlpha = rnd(0.28, 0.72);
+    ctx.fillStyle = pick(PINKS);
+    ctx.beginPath();
+    ctx.arc(gapCx + Math.cos(a) * r, gapCy + Math.sin(a) * r * 0.5, rnd(10, 24), 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Pass 2a: wispy outer halo ellipse.
+  for (let i = 0; i < 200; i++) {
     const ang = rnd(0, Math.PI * 2);
     const rf = Math.sqrt(Math.random());
     const px = canopyCx + Math.cos(ang) * canopyRx * rf;
     const py = canopyCy + Math.sin(ang) * canopyRy * rf;
-    ctx.globalAlpha = rnd(0.18, 0.72);
+    ctx.globalAlpha = rnd(0.08, 0.35);
     ctx.fillStyle = pick(PINKS);
     ctx.beginPath();
-    ctx.arc(px, py, rnd(5, 20), 0, Math.PI * 2);
+    ctx.arc(px, py, rnd(8, 28), 0, Math.PI * 2);
     ctx.fill();
   }
+
+  // Pass 2b: branch-following bloom — guarantees dense coverage on every arm.
+  recurse(bx, by, initAng, treeLen, 6, (x, y, ang, len, depth) => {
+    if (depth > 5) return;
+    const ex = x + Math.cos(ang) * len;
+    const ey = y + Math.sin(ang) * len;
+    const steps = Math.max(3, Math.ceil(len / 18));
+    const scatter = depth === 5 ? 110 : 50;
+    const count = depth <= 2 ? 3 : depth === 5 ? 3 : 2;
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const px = x + (ex - x) * t;
+      const py = y + (ey - y) * t;
+      for (let k = 0; k < count; k++) {
+        ctx.globalAlpha = rnd(0.20, 0.60);
+        ctx.fillStyle = pick(PINKS);
+        ctx.beginPath();
+        ctx.arc(px + rnd(-scatter, scatter), py + rnd(-scatter, scatter), rnd(10, 30), 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  });
 
   // Pass 3: draw branches on top so the trunk remains visible through the bloom.
   recurse(bx, by, initAng, treeLen, 6, (x, y, ang, len, depth) => {
     const ex = x + Math.cos(ang) * len;
     const ey = y + Math.sin(ang) * len;
     const steps = Math.ceil(len / 4);
-    const w = 38 * Math.pow(0.63, 6 - depth); // width tapers with depth
+    const w = 62 * Math.pow(0.63, 6 - depth); // width tapers with depth
 
     for (let i = 0; i <= steps; i++) {
       const t = i / steps;
       const px = x + (ex - x) * t;
       const py = y + (ey - y) * t;
 
-      if (depth >= 4) {
+      if (depth >= 5) {
         for (let k = 0; k < 2; k++) {
           ctx.globalAlpha = 1;
           ctx.fillStyle = pick(BROWNS);
@@ -113,21 +149,35 @@ function drawTree(ctx: CanvasRenderingContext2D, W: number, H: number) {
           );
           ctx.fill();
         }
+      } else if (depth === 4) {
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = pick(BROWNS);
+        ctx.beginPath();
+        ctx.arc(px + rnd(-1, 1), py + rnd(-1, 1), Math.max(1, w * 0.55), 0, Math.PI * 2);
+        ctx.fill();
+        for (let j = 0; j < 2; j++) {
+          ctx.globalAlpha = rnd(0.25, 0.65);
+          ctx.fillStyle = pick(PINKS);
+          ctx.beginPath();
+          ctx.arc(px + rnd(-40, 40), py + rnd(-40, 40), rnd(6, 20), 0, Math.PI * 2);
+          ctx.fill();
+        }
       } else if (depth >= 2) {
         ctx.globalAlpha = 1;
         ctx.fillStyle = pick(BROWNS);
         ctx.beginPath();
         ctx.arc(px + rnd(-1, 1), py + rnd(-1, 1), Math.max(1, w * 0.55), 0, Math.PI * 2);
         ctx.fill();
-        if (Math.random() > 0.35) {
-          ctx.globalAlpha = rnd(0.5, 1);
+        const leafCount = depth >= 3 ? 2 : 3;
+        for (let j = 0; j < leafCount; j++) {
+          ctx.globalAlpha = rnd(0.4, 0.9);
           ctx.fillStyle = pick(PINKS);
           ctx.beginPath();
-          ctx.arc(px + rnd(-14, 14), py + rnd(-14, 14), rnd(4, 12), 0, Math.PI * 2);
+          ctx.arc(px + rnd(-30, 30), py + rnd(-30, 30), rnd(5, 18), 0, Math.PI * 2);
           ctx.fill();
         }
       } else {
-        const n = depth === 0 ? 12 : 8;
+        const n = depth === 0 ? 16 : 10;
         for (let k = 0; k < n; k++) {
           ctx.globalAlpha = rnd(0.5, 1);
           ctx.fillStyle = pick(PINKS);
@@ -146,13 +196,13 @@ function drawTree(ctx: CanvasRenderingContext2D, W: number, H: number) {
   });
 
   // Ground petals spread under the canopy.
-  for (let i = 0; i < 90; i++) {
-    const px = canopyCx + rnd(-(canopyRx + 30), canopyRx * 0.5);
-    const py = by + rnd(-15, 8);
-    ctx.globalAlpha = rnd(0.2, 0.6);
+  for (let i = 0; i < 320; i++) {
+    const px = canopyCx + rnd(-(canopyRx + 80), canopyRx * 0.8);
+    const py = by + rnd(-30, 6);
+    ctx.globalAlpha = rnd(0.2, 0.7);
     ctx.fillStyle = pick(PINKS);
     ctx.beginPath();
-    ctx.arc(px, py, rnd(3, 13), 0, Math.PI * 2);
+    ctx.arc(px, py, rnd(3, 16), 0, Math.PI * 2);
     ctx.fill();
   }
 
@@ -170,7 +220,7 @@ function drawTree(ctx: CanvasRenderingContext2D, W: number, H: number) {
   ctx.globalAlpha = 1;
 }
 
-const serif = { fontFamily: "Georgia, 'Times New Roman', serif" };
+const serif = { fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif" };
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -348,14 +398,14 @@ export default function Hero() {
       />
 
       <div
-        className="relative z-10 min-h-screen flex flex-col justify-center"
-        style={{ paddingLeft: "clamp(2rem, 6vw, 5rem)" }}
+        className="hero-text relative z-10 min-h-screen flex flex-col justify-center"
+        style={{ paddingLeft: "clamp(2rem, 5vw, 4rem)" }}
       >
         <p
           className="text-xs uppercase tracking-widest text-neutral-400 mb-8"
           style={serif}
         >
-           Georgeown University · Washington D.C.· New York
+           Georgetown University · Washington DC· New York
         </p>
         <h1
           className="font-bold leading-[0.88] uppercase text-neutral-900"
@@ -369,7 +419,7 @@ export default function Hero() {
           className="mt-8 text-neutral-500 max-w-sm leading-relaxed"
           style={{ fontFamily: "var(--font-dm-sans), sans-serif", fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)" }}
         >
-          Data storyteller working at the intersection of global health and design.
+          Data storyteller working at the intersection of global health and product design.
         </p>
       </div>
 

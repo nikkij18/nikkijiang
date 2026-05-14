@@ -1,10 +1,11 @@
 import Link from "next/link";
 
-const serif = { fontFamily: "Georgia, 'Times New Roman', serif" };
+const serif = { fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif" };
 
 const LINKS = [
-  { label: "About", href: "/#about" },
+  { label: "About",    href: "/about" },
   { label: "Projects", href: "/projects" },
+  { label: "Contact",  href: "/contact" },
 ];
 
 export default function NavBar() {
@@ -19,9 +20,6 @@ export default function NavBar() {
             {label}
           </Link>
         ))}
-        <Link href="/contact" style={serif} className="text-sm text-neutral-600 hover:text-pink-400 transition-colors">
-          Contact
-        </Link>
       </div>
     </nav>
   );
