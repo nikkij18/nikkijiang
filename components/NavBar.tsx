@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 const serif = { fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif" };
 
 const LINKS = [
-  { label: "About",    href: "/about" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact",  href: "/contact" },
+  { label: "About",      href: "/about" },
+  { label: "Experience", href: "/experience" },
+  { label: "Projects",   href: "/projects" },
+  { label: "Contact",    href: "/contact" },
 ];
 
 export default function NavBar() {

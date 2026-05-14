@@ -40,7 +40,8 @@ export function getBranchNodes(W: number, H: number): BranchNode[] {
 // Canvas positions (as % of W/H) for the 3 labelled special nodes.
 // Chosen to sit inside the dense canopy region after 2.6× zoom from (64%, 36%).
 export const LABEL_NODES = [
-  { label: 'About Me', cx_pct: 0.486, cy_pct: 0.383, href: '/about' },
-  { label: 'Projects', cx_pct: 0.663, cy_pct: 0.322, href: '/projects' },
-  { label: 'Contact',  cx_pct: 0.571, cy_pct: 0.491, href: '/contact' },
+  { label: 'About Me',   cx_pct: 0.486, cy_pct: 0.383, href: '/about' },
+  { label: 'Experience', cx_pct: 0.610, cy_pct: 0.350, href: '/experience' },
+  { label: 'Projects',   cx_pct: 0.663, cy_pct: 0.322, href: '/projects' },
+  { label: 'Contact',    cx_pct: 0.571, cy_pct: 0.491, href: '/contact' },
 ] as const;
