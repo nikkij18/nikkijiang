@@ -56,7 +56,7 @@ export default function ContactPage() {
             className="max-w-[45ch] leading-relaxed text-neutral-600 mb-14"
             style={{ ...dmSans, fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
           >
-            Open to all opportunities to build.
+            Open to all opportunities to build what matters.
             <br />
             Feel free to reach out.
           </p>
