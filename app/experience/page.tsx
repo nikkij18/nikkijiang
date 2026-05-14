@@ -4,7 +4,7 @@ import BackToMap from "@/components/BackToMap";
 const serif = { fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', sans-serif" };
 const dmSans = { fontFamily: "var(--font-dm-sans), sans-serif" };
 
-type Role = { role: string; period: string; bullets: string[] };
+type Role = { role: string; period: string; bullets: string[]; description?: string };
 type Experience = { org: string; type: string; roles: Role[] };
 
 const EXPERIENCES: Experience[] = [
@@ -14,10 +14,9 @@ const EXPERIENCES: Experience[] = [
     roles: [
       {
         role: "Product Analyst Intern",
-        period: "Summer 2025",
+        period: "July 2025 — December 2025",
         bullets: [
-          "Led end-to-end product discovery for a health data feature serving 10k+ users.",
-          "Collaborated with engineering and design to ship an MVP in 6 weeks.",
+          "Drove product requirements for an AI clinical assistant platform by segmenting patient and provider features and streamlining demo scheduling workflows. Supported the launch of the CANTAB digital cognitive evaluation product, including user workflows and client success tracking. Generated 100+ leads in federally qualified health centers, advancing digital health tool integration in safety-net healthcare systems.",
         ],
       },
     ],
@@ -30,13 +29,15 @@ const EXPERIENCES: Experience[] = [
         role: "Director of Operations & Finance",
         period: "May 2026 — Present",
         bullets: [
-          "Participated in product case competitions and workshops.",
+          "Migrated the entire club onto a Jira workflow, redefined existing positions, and created two new board roles to better reflect the team's growth. Manage all finances, client interactions, contracts, and funding. Streamlined team operations over the summer and sourced promotional materials and merch. A highly collaborative role sitting at the intersection of strategy, people, and execution.",
         ],
       },
       {
         role: "Director of Personnel",
         period: "Fall 2025 — May 2026",
-        bullets: [],
+        bullets: [
+          "Led recruiting efforts and redesigned the fellowship and mentorship process to increase engagement. Organized all social events including the end-of-semester retreat, building a closer club community and growing Product Space's presence on campus.",
+        ],
       },
       {
         role: "Senior Product Analyst",
@@ -58,21 +59,21 @@ const EXPERIENCES: Experience[] = [
         role: "Contracted Product Manager",
         period: "Fall 2025",
         bullets: [
-          "Led end-to-end product discovery for a health data feature serving 10k+ users.",
-          "Collaborated with engineering and design to ship an MVP in 6 weeks.",
+          "Redesigned user referral system and themed wishlists features for a Gen Z focused fashion app.",
+          "Collaborated with engineering team to implement new features on the native platform"
         ],
       },
     ],
   },
   {
-    org: "Graduate Admissions Council",
+    org: "Graduate Management Admissions Council (GMAC)",
     type: "Contract",
     roles: [
       {
         role: "Contracted Product Manager",
         period: "Spring 2025",
         bullets: [
-          "Participated in product case competitions and workshops.",
+          "MBA program match platform redesign and developed GTM strategy and for a new career advisory product, through synthesizing user research, conducting competitor analysis, and evaulating market trends for 90k+ GMAT test takers and prospective MBA applicants",
         ],
       },
     ],
@@ -140,17 +141,12 @@ export default function ExperiencePage() {
                   </div>
 
                   {r.bullets.length > 0 && (
-                    <ul className="flex flex-col gap-1 mt-1">
-                      {r.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="text-neutral-500 leading-relaxed list-disc ml-4"
-                          style={{ ...dmSans, fontSize: "clamp(0.875rem, 1.2vw, 1rem)" }}
-                        >
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
+                    <p
+                      className="text-neutral-500 leading-relaxed mt-1"
+                      style={{ ...dmSans, fontSize: "clamp(0.875rem, 1.2vw, 1rem)" }}
+                    >
+                      {r.bullets.join(" ")}
+                    </p>
                   )}
                 </div>
               ))}
