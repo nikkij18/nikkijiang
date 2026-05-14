@@ -43,7 +43,6 @@ export default async function ProjectPage({
         <span className="text-xs uppercase tracking-[0.15em] text-pink-400 border border-pink-200 px-2 py-0.5" style={serif}>
           {project.contentType.replace('-', ' ')}
         </span>
-        <span className="text-xs text-neutral-400" style={serif}>{project.year}</span>
         <span className="text-xs text-neutral-400" style={serif}>{project.role}</span>
       </div>
 
@@ -51,7 +50,7 @@ export default async function ProjectPage({
 
       {/* PDF viewer */}
       {project.pdfUrl && (
-        <div className="w-full flex-1" style={{ height: '80vh' }}>
+        <div className="w-full" style={{ height: 'calc(100vw * 1.414)', maxHeight: 'none' }}>
           <iframe
             src={project.pdfUrl}
             className="w-full h-full"

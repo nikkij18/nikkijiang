@@ -68,7 +68,7 @@ export default function ProjectsPage() {
                   >
                     {TYPE_LABELS[project.contentType] ?? project.contentType}
                   </span>
-                  <span className="text-xs text-neutral-400" style={serif}>{project.year}</span>
+
                 </div>
                 <h2
                   className="font-semibold text-neutral-900 group-hover:text-pink-500 transition-colors leading-tight"
