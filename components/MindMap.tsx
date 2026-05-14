@@ -31,11 +31,11 @@ function buildGraph(W: number, H: number): { nodes: NodeData[]; edges: EdgeData[
 
   const rng = makeLCG(0xdeadbeef);
   const filler: { x: number; y: number }[] = [];
-  for (let i = 0; i < 20; i++) {
-    const col = i % 5, row = Math.floor(i / 5);
+  for (let i = 0; i < 40; i++) {
+    const col = i % 8, row = Math.floor(i / 8);
     filler.push({
-      x: W * (0.04 + col * 0.19 + rng() * 0.10 - 0.05),
-      y: H * (0.08 + row * 0.22 + rng() * 0.10 - 0.05),
+      x: W * (0.02 + col * 0.13 + rng() * 0.08 - 0.04),
+      y: H * (0.05 + row * 0.20 + rng() * 0.10 - 0.05),
     });
   }
 
@@ -65,10 +65,10 @@ function buildGraph(W: number, H: number): { nodes: NodeData[]; edges: EdgeData[
 
 function buildSway(count: number) {
   return Array.from({ length: count }, (_, i) => ({
-    ax:  3 + (i * 7  % 5),
-    ay:  2.5 + (i * 11 % 4),
-    fx:  0.28 + (i * 0.037 % 0.20),
-    fy:  0.22 + (i * 0.053 % 0.18),
+    ax:  10 + (i * 7  % 14),
+    ay:  8  + (i * 11 % 12),
+    fx:  0.6 + (i * 0.037 % 0.50),
+    fy:  0.5 + (i * 0.053 % 0.45),
     px:  (i * 137.5 * Math.PI) / 180,
     py:  (i * 97.3  * Math.PI) / 180,
   }));
