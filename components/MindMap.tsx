@@ -224,8 +224,8 @@ export default function MindMap({ heroWrapRef }: Props) {
           {graph.nodes.map((n, i) => !n.special ? null : (
             <g key={i} ref={el => { nodeGroupRefs.current[i] = el; }}
                style={{ cursor: 'pointer' }} onClick={() => handleNodeClick(n.href, n.x, n.y)}>
-              <circle cx={n.x} cy={n.y} r={26} fill="rgba(244,160,181,0.18)" />
-              <circle cx={n.x} cy={n.y} r={13} fill="#ff9fb0" opacity={0.9} />
+              <circle cx={n.x} cy={n.y} r={26} fill="rgba(255,220,230,0.35)" />
+              <circle cx={n.x} cy={n.y} r={13} fill="#ffe4ee" opacity={1} stroke="#ffb3c8" strokeWidth={1.5} />
               <text
                 x={n.x} y={n.y + 28}
                 textAnchor="middle"
