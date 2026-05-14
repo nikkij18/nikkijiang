@@ -11,6 +11,7 @@ const dmSans = { fontFamily: "var(--font-dm-sans), sans-serif" };
 const EXTERNAL_LINKS = [
   { label: "LinkedIn", value: "linkedin.com/in/nikki-jiang", href: "https://linkedin.com/in/nikki-jiang" },
   { label: "GitHub",   value: "github.com/nikkij18",         href: "https://github.com/nikkij18" },
+  { label: "Pinterest",   value: "pinterest.com/nikkizjiang",   href: "https://www.pinterest.com/nikkizjiang/" },
 ];
 
 const EMAIL = "nzj3@georgetown.edu";
@@ -50,8 +51,9 @@ export default function ContactPage() {
         className="max-w-[45ch] leading-relaxed text-neutral-600 mb-14"
         style={{ ...dmSans, fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
       >
-        Open to research collaborations, design partnerships, and conversations about
-        global health and data storytelling. Feel free to reach out.
+        Open to all opportunities to build what matters. 
+        <br />
+        Feel free to reach out.
       </p>
 
       <div className="flex flex-col divide-y divide-neutral-100 max-w-xl">
