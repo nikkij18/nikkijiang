@@ -48,21 +48,21 @@ export default function AboutPage() {
             style={{ ...dmSans, fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
           >
             Growing up in 6 cities across 3 countries before the age of 12, I developed a
-            deep curiosity for people, connections, and stories. 
+            deep curiosity for people, stories, and strength through diversity . 
           </p>
 
           <p
             className="leading-relaxed text-neutral-600"
             style={{ ...dmSans, fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
           >
-            I&apos;m passionate about leveraging technology and design to create tools that promote global health equity. Inspired by leaders like Dr. Paul Farmer and Dr. Eric Topol, who emphasized human-centered care through innovation, I strive to build accessible products that improve health outcomes and ensure healthcare as a global basic right. 
+            I&apos;m passionate about leveraging technology and design to create tools that promote global health equity. Inspired by leaders like Dr. Paul Farmer and Dr. Eric Topol, who emphasized human-centered care through innovation, I strive to build accessible products that improve health outcomes and ensure healthcare as a human right. 
           </p>
 
            <p
             className="leading-relaxed text-neutral-600"
             style={{ ...dmSans, fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
           >
-            Outside of building products, you'll find me hosting gatherings on my balcony, playing beach volleyball, or planning my next travel adventure. 
+            Outside of building products, you'll find me hosting gatherings on my balcony, playing beach volleyball, concert going, or planning my next solo trip (so far: Qatar, Taipei, Scottish Highlands, ). 
           </p>
 
           {/* Awards & Certificates */}
@@ -73,8 +73,9 @@ export default function AboutPage() {
             <div className="flex flex-col divide-y divide-neutral-100">
               {[
                 { type: "Certificate", title: "Human Centered Design", org: "Stanford d.school" },
+                { type: "Certificate", title: "Social-Behavioral-Educational Human Subject Protection for Human Research", org: "CITI Program" },
                 { type: "Award", title: "HOSA Bioinformatics — 2nd Place, New York State", org: "HOSA" },
-                { type: "Recognition", title: "NY State Assembly Recognition Letter", org: "BPE Breast Cancer Research" },
+                { type: "Recognition", title: "NY State Assembly Recognition Letter", org: "BPE Breast Cancer Research @ UMass Amherst" },
               ].map(({ type, title, org }) => (
                 <div key={title} className="flex items-baseline justify-between gap-4 py-3">
                   <div className="flex flex-col gap-0.5">
@@ -91,7 +92,7 @@ export default function AboutPage() {
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2 pt-2">
-            {["Data Visualization", "Health Systems", "UI/UX Design", "R", "Python", "Figma", "Supabase"].map(tag => (
+            {["Data Visualization", "Health Systems", "UI/UX Design", "R", "Python", "Figma", "Supabase", "Jira", "Taguette"].map(tag => (
               <span
                 key={tag}
                 className="text-xs px-3 py-1 border border-pink-200 text-pink-600 uppercase tracking-widest"
