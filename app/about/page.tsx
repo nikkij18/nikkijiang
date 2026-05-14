@@ -48,21 +48,21 @@ export default function AboutPage() {
             style={{ ...dmSans, fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
           >
             Growing up in 6 cities across 3 countries before the age of 12, I developed a
-            deep curiosity for people, stories, and strength through diversity . 
+            deep curiosity for people, their stories, and their vision for the future. 
           </p>
 
           <p
             className="leading-relaxed text-neutral-600"
             style={{ ...dmSans, fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
           >
-            I&apos;m passionate about leveraging technology and design to create tools that promote global health equity. Inspired by leaders like Dr. Paul Farmer and Dr. Eric Topol, who emphasized human-centered care through innovation, I strive to build accessible products that improve health outcomes and ensure healthcare as a human right. 
+            I&apos;m passionate about leveraging technology and design to create tools that promote global health equity. Inspired by leaders like Dr. Paul Farmer and Dr. Eric Topol, who emphasize human-centered care through innovation, I strive to build accessible products that improve health outcomes and ensure healthcare as a human right. 
           </p>
 
            <p
             className="leading-relaxed text-neutral-600"
             style={{ ...dmSans, fontSize: "clamp(1rem, 1.6vw, 1.2rem)" }}
           >
-            Outside of building products, you'll find me hosting gatherings on my balcony, playing beach volleyball, concert going, or planning my next solo trip (so far: Qatar, Taipei, Scottish Highlands, ). 
+            Outside of building products, you'll find me hosting gatherings on my balcony, playing beach volleyball, concert going, or planning my next solo trip (so far: Qatar, Taipei, Scottish Highlands). 
           </p>
 
           {/* Awards & Certificates */}
