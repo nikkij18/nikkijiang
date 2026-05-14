@@ -1,19 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- 5 petals rotated around center (16,16) -->
   <g transform="translate(16,16)">
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="#f9a8d4" transform="rotate(0)"/>
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="#f9a8d4" transform="rotate(72)"/>
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="#f9a8d4" transform="rotate(144)"/>
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="#f9a8d4" transform="rotate(216)"/>
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="#f9a8d4" transform="rotate(288)"/>
-    <!-- petal outlines -->
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="none" stroke="#ec4899" stroke-width="0.5" transform="rotate(0)"/>
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="none" stroke="#ec4899" stroke-width="0.5" transform="rotate(72)"/>
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="none" stroke="#ec4899" stroke-width="0.5" transform="rotate(144)"/>
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="none" stroke="#ec4899" stroke-width="0.5" transform="rotate(216)"/>
-    <ellipse cx="0" cy="-6" rx="3.2" ry="5.5" fill="none" stroke="#ec4899" stroke-width="0.5" transform="rotate(288)"/>
-    <!-- center -->
-    <circle cx="0" cy="0" r="2.8" fill="none" stroke="#ec4899" stroke-width="0.5"/>
-    <circle cx="0" cy="0" r="1.2" fill="#fbbf24"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="#f9a8d4" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="#f9a8d4" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="#f9a8d4" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="#f9a8d4" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="#f9a8d4" transform="rotate(288)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="none" stroke="#ec4899" stroke-width="0.6" transform="rotate(0)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="none" stroke="#ec4899" stroke-width="0.6" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="none" stroke="#ec4899" stroke-width="0.6" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="none" stroke="#ec4899" stroke-width="0.6" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-8" rx="5" ry="8" fill="none" stroke="#ec4899" stroke-width="0.6" transform="rotate(288)"/>
+    <circle cx="0" cy="0" r="3.5" fill="none" stroke="#ec4899" stroke-width="0.6"/>
+    <circle cx="0" cy="0" r="1.6" fill="#fbbf24"/>
   </g>
 </svg>
