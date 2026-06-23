@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import PageReveal from "@/components/PageReveal";
 import BackToMap from "@/components/BackToMap";
 
@@ -116,17 +115,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        {/* Right: builder image */}
-        <div className="hidden md:flex flex-col flex-shrink-0 items-center justify-end w-[28vw] max-w-[380px] self-stretch">
-          <Image
-            src="/product space posts.jpg"
-            alt="Builder illustration"
-            width={380}
-            height={560}
-            className="object-contain object-bottom w-full"
-            style={{ maxHeight: '70vh' }}
-          />
-        </div>
+
 
       </div>
     </main>

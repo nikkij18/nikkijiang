@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getAllProjects } from "@/lib/projects";
 import PageReveal from "@/components/PageReveal";
 import BackToMap from "@/components/BackToMap";
@@ -58,8 +59,21 @@ export default function ProjectsPage() {
               href={href}
               target={external ? "_blank" : undefined}
               rel={external ? "noopener noreferrer" : undefined}
-              className="group flex items-baseline justify-between gap-8 py-7 hover:pl-2 transition-all duration-200"
+              className="group flex items-center justify-between gap-8 py-7 hover:pl-2 transition-all duration-200"
             >
+              <div className="relative flex-shrink-0 w-24 h-16 overflow-hidden">
+                {project.coverImage ? (
+                  <Image
+                    src={project.coverImage}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-pink-100" />
+                )}
+                <div className="absolute inset-0 bg-pink-400/40" />
+              </div>
               <div className="flex flex-col gap-2 flex-1 min-w-0">
                 <div className="flex items-center gap-3 flex-wrap">
                   <span
