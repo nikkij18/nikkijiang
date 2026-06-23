@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { projects as rawProjects } from '@/lib/projects';
 import type { ContentType } from '@/lib/types';
 
@@ -31,6 +32,8 @@ const PROJECTS = carouselRaw.map((p, i) => ({
   description: p.shortDescription,
   coverImage: p.coverImage,
   color: COLORS[i % COLORS.length],
+  href: p.liveUrl ?? p.githubUrl ?? `/projects/${p.slug}`,
+  external: !!(p.liveUrl ?? p.githubUrl),
 }));
 
 const CARD_W  = 270;
@@ -142,12 +145,15 @@ export default function ProjectsSection() {
               >
                 {active.category}
               </span>
-              <h3
-                className="font-bold text-neutral-900 leading-tight"
+              <Link
+                href={active.href}
+                target={active.external ? "_blank" : undefined}
+                rel={active.external ? "noopener noreferrer" : undefined}
+                className="font-bold text-neutral-900 hover:text-pink-500 transition-colors leading-tight"
                 style={{ ...serif, fontSize: "clamp(2rem, 3.8vw, 3.25rem)" }}
               >
                 {active.title}
-              </h3>
+              </Link>
               <p
                 className="text-neutral-400 leading-relaxed max-w-xs"
                 style={{ ...dmSans, fontSize: "clamp(0.875rem, 1.3vw, 1.05rem)" }}
@@ -248,13 +254,17 @@ export default function ProjectsSection() {
                       zIndex: 1,
                     }}
                   >
-                    <div
-                      className="rounded-sm overflow-hidden bg-white"
+                    <Link
+                      href={project.href}
+                      target={project.external ? "_blank" : undefined}
+                      rel={project.external ? "noopener noreferrer" : undefined}
+                      className="block rounded-sm overflow-hidden bg-white"
                       style={{
                         boxShadow:
                           offset === 0
                             ? "0 8px 32px rgba(0,0,0,0.13)"
                             : "0 4px 14px rgba(0,0,0,0.07)",
+                        textDecoration: "none",
                       }}
                     >
                       <div style={{ height: IMG_H, background: project.color, position: 'relative' }}>
@@ -282,7 +292,7 @@ export default function ProjectsSection() {
                           {project.title}
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 </motion.div>
               );
