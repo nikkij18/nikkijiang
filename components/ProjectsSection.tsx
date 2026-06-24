@@ -36,7 +36,7 @@ const PROJECTS = carouselRaw.map((p, i) => ({
   external: !!(p.liveUrl ?? p.githubUrl),
 }));
 
-const CARD_W  = 270;
+const CARD_W  = 310;
 const IMG_H   = Math.round(CARD_W * 138 / 220); // original 138/220 aspect ratio
 const CLIP_H  = 46;
 const CLIP_GRIP = 14;
@@ -65,7 +65,7 @@ function wireYDelta(xOffset: number, containerW: number): number {
 
 function Paperclip() {
   return (
-    <svg width="13" height={CLIP_H} viewBox="0 0 13 46" fill="none" aria-hidden="true">
+    <svg width="16" height={CLIP_H} viewBox="0 0 16 46" fill="none" aria-hidden="true">
       <path
         d="M6.5 2 C3.5 2 1.5 4.2 1.5 7 L1.5 32 C1.5 37 4.4 41 8 41 C11.6 41 14.5 37 14.5 32 L14.5 12 C14.5 8.5 12.5 6 10 6 C7.5 6 5.5 8.5 5.5 12 L5.5 32 C5.5 33.9 6.6 35.5 8 35.5 C9.4 35.5 10.5 33.9 10.5 32 L10.5 12"
         stroke="#c0c0c0"
@@ -125,8 +125,8 @@ export default function ProjectsSection() {
 
       {/* Two-column body */}
       <div
-        className="grid items-center gap-16"
-        style={{ gridTemplateColumns: "1fr 1fr", minHeight: 440 }}
+        className="grid items-start gap-16"
+        style={{ gridTemplateColumns: "1fr 1fr" }}
       >
         {/* LEFT — active project info */}
         <div>
@@ -149,7 +149,7 @@ export default function ProjectsSection() {
                 href={active.href}
                 target={active.external ? "_blank" : undefined}
                 rel={active.external ? "noopener noreferrer" : undefined}
-                className="font-bold text-neutral-900 hover:text-pink-500 transition-colors leading-tight"
+                className="font-bold text-neutral-900 hover:text-pink-400 transition-colors leading-tight"
                 style={{ ...serif, fontSize: "clamp(2rem, 3.8vw, 3.25rem)" }}
               >
                 {active.title}
@@ -189,13 +189,13 @@ export default function ProjectsSection() {
         <div
           ref={columnRef}
           className="relative select-none"
-          style={{ height: 440, overflow: "hidden" }}
+          style={{ height: 520, overflow: "hidden" }}
         >
           {/* Wire */}
           <svg
             aria-hidden="true"
             className="absolute left-0 w-full pointer-events-none"
-            style={{ top: 56 }}
+            style={{ top: 10 }}
             height={52}
             viewBox="0 0 800 52"
             preserveAspectRatio="none"
@@ -214,7 +214,7 @@ export default function ProjectsSection() {
             style={{
               perspective: 1100,
               position: "absolute",
-              top: 76, // ring top sits just on the wire (wire at ~84px in container)
+              top: 30, // ring top sits just on the wire (wire center at ~10+28=38px)
               left: "50%",
             }}
           >
@@ -258,7 +258,7 @@ export default function ProjectsSection() {
                       href={project.href}
                       target={project.external ? "_blank" : undefined}
                       rel={project.external ? "noopener noreferrer" : undefined}
-                      className="block rounded-sm overflow-hidden bg-white"
+                      className="block rounded-sm overflow-hidden bg-white group"
                       style={{
                         boxShadow:
                           offset === 0
@@ -276,7 +276,7 @@ export default function ProjectsSection() {
                             className="object-cover"
                           />
                         )}
-                        <div className="absolute inset-0" style={{ background: "rgba(249, 168, 194, 0.35)" }} />
+                        <div className="absolute inset-0 transition-opacity duration-300 group-hover:opacity-0" style={{ background: "rgba(249, 168, 194, 0.35)" }} />
                       </div>
                       <div className="px-3 py-3">
                         <span
