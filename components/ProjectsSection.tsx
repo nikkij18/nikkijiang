@@ -36,7 +36,7 @@ const PROJECTS = carouselRaw.map((p, i) => ({
   external: !!(p.liveUrl ?? p.githubUrl),
 }));
 
-const CARD_W  = 310;
+const CARD_W  = 390;
 const IMG_H   = Math.round(CARD_W * 138 / 220); // original 138/220 aspect ratio
 const CLIP_H  = 46;
 const CLIP_GRIP = 14;
@@ -189,7 +189,7 @@ export default function ProjectsSection() {
         <div
           ref={columnRef}
           className="relative select-none"
-          style={{ height: 520, overflow: "hidden" }}
+          style={{ height: 430, overflow: "hidden" }}
         >
           {/* Wire */}
           <svg
